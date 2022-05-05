@@ -316,6 +316,7 @@ class FastPitchModel(SpectrogramGenerator, Exportable):
         else:
             audio, audio_lens, text, text_lens, durs, pitch, speaker = batch
 
+        # TODO (xueyang): spec_len change to mel_len for coherence
         mels, spec_len = self.preprocessor(input_signal=audio, length=audio_lens)
 
         mels_pred, _, _, log_durs_pred, pitch_pred, attn_soft, attn_logprob, attn_hard, attn_hard_dur, pitch = self(
